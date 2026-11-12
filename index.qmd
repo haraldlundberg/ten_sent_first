@@ -1,0 +1,68 @@
+---
+title: "10 sentence term paper correlation analysis"
+authors:
+  - name: Harald Lundberg
+    affiliation: UW-Madison
+execute:
+  echo: true
+bibliography: references.bib
+---
+
+# Introduction
+
+```{python}
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = sns.load_dataset('car_crashes')
+
+sns.set_context('talk')
+```
+
+We have data on car crashes for `{python} f"{df.shape[0]}"` US states, and we want to know how speeding relates to alcohol. Our research question is whether the rate of speeding-related crashes correlates with the rate of alcohol-related crashes.
+
+# Literature Review
+
+Dear Mona, Which State Has The Worst Drivers? [@chalabi2014mona]
+
+# Method
+
+Two columns of continuous data (speeding and alcohol, each measured as drivers involved in fatal collisions per billion miles) will be evaluated using simple correlation analysis and a scatterplot. These two methods are classic and traditional starting points when evaluating data like these.
+
+# Results
+
+```{python}
+corr_val = np.array(df[['speeding', 'alcohol']].corr())[0][1]
+
+if corr_val > .8:
+  narrative = "a very strong positive correlation"
+elif corr_val > .4:
+  narrative = "a moderate positive correlation"
+elif corr_val > 0:
+  narrative = "a positive but weak correlation"
+elif corr_val > -.4:
+  narrative = "a weak negative correlation"
+elif corr_val > -.8:
+  narrative = "a moderate negative correlation"
+else:
+  narrative = "a very strong negative correlation"
+```
+
+Using the classic simple correlation approach, these data produce a correlation coefficient of `{python} f"{round(corr_val, 5)}"`. Given this result, we conclude that this relationship is `{python} narrative`.
+
+```{python}
+#| label: fig-speeding-alcohol-scatter
+#| fig-cap: "A scatterplot of speeding and alcohol"
+
+fig, ax = plt.subplots(figsize=(6, 3.5))
+
+sns.scatterplot(data=df, y='speeding', x='alcohol', ax=ax)
+```
+
+As shown in @fig-speeding-alcohol-scatter, the points rise from left to right.
+
+# Discussion
+
+We found the correlation coefficient and plotted it. There is a positive correlation between speeding and alcohol in car crashes.

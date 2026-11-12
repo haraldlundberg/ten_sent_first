@@ -1,0 +1,54 @@
+# Lines starting with # are comments; Git ignores them.
+# A name ending in / means “this whole folder”.
+# A * is a wildcard that matches any characters.
+
+# ---- macOS system files ----
+# Folder-view settings that macOS creates automatically.
+.DS_Store
+
+# ---- Windows system files ----
+# Cached thumbnails and folder settings that Windows creates automatically.
+Thumbs.db
+Desktop.ini
+
+# ---- Quarto ----
+# Quarto’s internal working folder.
+/.quarto/
+# The finished website that “quarto preview” and “quarto render” build.
+/_site/
+# Extra files Quarto creates when it runs your code (plots, caches).
+*_files/
+*_cache/
+
+# ---- Python ----
+# Compiled copies of your code that Python makes to run faster.
+__pycache__/
+*.pyc
+# Virtual environment folders (separate copies of Python packages).
+venv/
+.venv/
+env/
+# A file that often holds passwords or secret keys.
+.env
+
+# ---- R ----
+# Your command history and saved workspace.
+.Rhistory
+.RData
+# RStudio’s per-user project settings.
+.Rproj.user/
+.Ruserdata
+
+# ---- Jupyter Lab and Notebooks ----
+# Automatic backup copies of notebooks that Jupyter creates.
+.ipynb_checkpoints/
+# Cached results Jupyter and Quarto can create.
+.jupyter_cache/
+
+# ---- Editors (IDEs) ----
+# VS Code’s per-project settings.
+.vscode/
+# PyCharm and other JetBrains editors’ settings.
+.idea/
+
+# This was made by Claude
